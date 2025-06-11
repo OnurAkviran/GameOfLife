@@ -9,10 +9,11 @@ function make2dArray(cols, rows) {
 let grid;
 let cols;
 let rows;
-let resolution = 20;
+let resolution = 5;
 
 function setup() {
     createCanvas(600, 400);
+    frameRate(24);
     cols = width / resolution;
     rows = height / resolution;
     grid = make2dArray(cols,rows);
@@ -22,8 +23,6 @@ function setup() {
         }
     }
 }
-
-setup();
 
 function draw() {
     background(0);
@@ -38,4 +37,42 @@ function draw() {
             }
         }
     }
+    let next = make2dArray(cols,rows);
+    for (let i = 0; i < cols; i++) {
+        for( let j = 0; j < rows; j++) {
+            if (i == 0 || j == 0 || i == cols - 1 || j == rows - 1){
+                next[i][j] = grid[i][j];
+                continue;
+            }
+            let neighbors = countNeighbors(grid,i,j);
+
+            let cellState = grid[i][j]
+            //Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
+            if(cellState == 0 && neighbors == 3){
+                next[i][j] = 1;
+            }
+            //Any live cell with fewer than two live neighbours dies, as if by underpopulation.
+            //Any live cell with more than three live neighbours dies, as if by overpopulation. 
+            else if (cellState == 1 && neighbors < 2 || neighbors >3 ){
+                next[i][j] = 0;
+            }
+            //Any live cell with two or three live neighbours lives on to the next generation. 
+            else {
+                next[i][j] = cellState;
+            }
+        }
+    }
+    grid = next;
+}
+
+function countNeighbors(grid,x,y){
+    let sum = 0;
+    for(let i = -1; i < 2; i++){
+        for(let j = -1; j < 2; j++){
+            sum += grid[x+i][y+j];
+        }
+    }
+    sum -= grid[x][y];
+
+    return sum;
 }
