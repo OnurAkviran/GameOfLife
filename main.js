@@ -9,19 +9,23 @@ function make2dArray(cols, rows) {
 let grid;
 let cols;
 let rows;
-let resolution = 5;
+let resolution = 10;
 
 function setup() {
-    createCanvas(600, 400);
+    createCanvas(windowWidth - 100, windowHeight - 200);
     frameRate(24);
-    cols = width / resolution;
-    rows = height / resolution;
+    cols = floor(width / resolution);
+    rows = floor(height / resolution);
     grid = make2dArray(cols,rows);
     for (let i = 0; i < cols; i++) {
         for( let j = 0; j < rows; j++) {
             grid[i][j] = floor(random(2));
         }
     }
+}
+
+function windowResized() {
+    setup();
 }
 
 function draw() {

@@ -4,10 +4,52 @@
     <script src="https://cdn.jsdelivr.net/npm/p5@1.11.8/lib/p5.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Conway's Game of Life</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="favicon_io/site.webmanifest">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            background-color: #121212;
+            color: #ffffff;
+        }
+
+        h3 {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+        }
+        a {
+            color: #ffffff;
+        }
+        a:hover {
+            color: #0e87ce;
+        }
+        canvas {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+
+        footer {
+            margin: 2rem;
+        }
+    </style>
 </head>
 <body>
     <h3>Conway's Game of Life</h3>
+    <a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">Learn more</a>
+    <br>
     <script src="main.js"></script>
 </body>
 </html>
