@@ -9,9 +9,11 @@ function make2dArray(cols, rows) {
 let grid;
 let cols;
 let rows;
+let generation;
 let resolution = 10;
 
 function setup() {
+    generation = 0;
     createCanvas(windowWidth - 100, windowHeight - 200);
     frameRate(24);
     cols = floor(width / resolution);
@@ -41,6 +43,9 @@ function draw() {
             }
         }
     }
+
+    generation ++;
+    document.getElementById("generation").innerText = generation;
     let next = make2dArray(cols,rows);
     for (let i = 0; i < cols; i++) {
         for( let j = 0; j < rows; j++) {
